@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>裁判文书搜索</title>
+    <!-- zui -->
+    <link th:href="@{css/zui.min.css}" rel="stylesheet">
+
+    <style>
+        .input-group{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        .container{
+            padding-left: 26px;
+        }
+        .caseNameHref{
+            font-size: 20px;
+        }
+        .col-xs-3{
+            font-size: 15px;
+        }
+        .col-xs-4{
+            font-size: 15px;
+        }
+        .col-xs-5{
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+<!--导航栏-->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!-- 导航项目 -->
+            <div class="collapse navbar-collapse navbar-collapse-example">
+                <!-- 一般导航项目 -->
+                <ul class="nav navbar-nav">
+                    <li><a href="/">😀裁判文书管理系统</a></li>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/uploadFile">上传文书</a></li>
+                    <li class="active" style="background: #66afe9"><a href="/searchCase">案号搜索</a></li>
+                    <li><a href="/logout" onclick="return confirm('确定注销吗？');">注销</a></li>
+                </ul>
+            </div><!-- END .navbar-collapse -->
+        </div>
+    </div>
+</nav>
+
+
+<h1 style="text-align: center">😀案号搜索</h1><br>
+
+<form action="/searchCase">
+<div class="input-group">
+    <div class="input-control search-box search-box-circle has-icon-left has-icon-right search-example" id="searchboxExample">
+        <input name="searchText" id="inputSearchExample3" type="search" class="form-control search-input" placeholder="搜索">
+        <label for="inputSearchExample3" class="input-control-icon-left search-icon"><i class="icon icon-search"></i></label>
+    </div>
+    <span class="input-group-btn">
+    <input class="btn btn-primary" type="submit" value="搜索">
+    </span>
+</div>
+</form><br>
+
+
+<form action="/displayByCaseId">
+<div class = "container">
+    <!--链接-->
+    <div>
+        <a class="caseNameHref" th:text="${paperName}" th:href="@{/displayByCaseId(id=${caseId})}"></a>
+    </div>
+    <!--格栅-->
+    <div class="row">
+        <div class="col-xs-3">
+            <p th:text="${court}"></p>
+        </div>
+        <div class="col-xs-4">
+            <p th:text="${caseId}"></p>
+        </div>
+        <div class="col-xs-5">
+            <p th:text="${date}"></p>
+        </div>
+    </div>
+    <!--一串文字-->
+    <div>
+        <p STYLE="font-size: 15px" th:text="${text}"></p>
+    </div>
+</div>
+</form>
+
+</body>
+</html>

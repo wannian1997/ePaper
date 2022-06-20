@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>未成功解析界面</title>
+    <!-- zui -->
+    <link th:href="@{css/zui.min.css}" rel="stylesheet">
+    <style>
+        .warnMessage{
+            padding-left: 30px;
+            padding-right: 30px
+        }
+    </style>
+</head>
+<body>
+<!--导航栏-->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!-- 导航项目 -->
+            <div class="collapse navbar-collapse navbar-collapse-example">
+                <!-- 一般导航项目 -->
+                <ul class="nav navbar-nav">
+                    <li><a href="/">😀裁判文书管理系统</a></li>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/uploadFile">上传文书</a></li>
+                    <li><a href="/searchCase">案号搜索</a></li>
+                    <li><a href="/logout" onclick="return confirm('确定注销吗？');">注销</a></li>
+                </ul>
+            </div><!-- END .navbar-collapse -->
+        </div>
+    </div>
+</nav>
+
+<div class="warnMessage">
+    <div class="alert alert-warning"><p style="font-size: 15px">似乎发生了一些错误，请返回重试！</p><br>😟</div>
+</div>
+</body>
+</html>

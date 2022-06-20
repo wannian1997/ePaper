@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>裁判文书管理系统</title>
+    <!-- zui -->
+    <link href="css/zui.min.css" rel="stylesheet">
+
+    <style>
+        .form-control{
+            background: #a2e4de;
+        }
+        .inFont{
+            font-size:15px;color: #398439;
+        }
+    </style>
+
+</head>
+<body>
+<!--导航栏-->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!-- 导航项目 -->
+            <div class="collapse navbar-collapse navbar-collapse-example">
+                <!-- 一般导航项目 -->
+                <ul class="nav navbar-nav">
+                    <li><a href="/">😀裁判文书管理系统</a></li>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/uploadFile">上传文书</a></li>
+                    <li><a href="/searchCase">案号搜索</a></li>
+                    <li><a href="/logout" onclick="return confirm('确定注销吗？');">注销</a></li>
+                    <li><a>裁判文书信息</a></li>
+                </ul>
+            </div><!-- END .navbar-collapse -->
+        </div>
+    </div>
+</nav>
+
+
+<article class="article">
+    <!-- 文章头部 -->
+    <header>
+        <!--标题-->
+        <h1 class="text-center" th:text="${paperName}"></h1>
+        <!--表单-->
+        <form action="/saveChangedInformation">
+            <p class="inFont">案号（不可修改）：</p>
+            <input class="form-control" name="caseId" type="text" th:value="${caseId}" readonly><br>
+            <p class="inFont">案由：</p>
+            <input class="form-control" name="causeOfAction" type="text" th:value="${causeOfAction}"><br>
+            <p class="inFont">法院：</p>
+            <input class="form-control" name="court" type="text" th:value="${court}"><br>
+            <p class="inFont">文书类型：</p>
+            <input class="form-control" name="paperType" type="text" th:value="${paperType}"><br>
+            <p class="inFont">检察院：</p>
+            <input class="form-control" name="prosecution" type="text" th:value="${prosecution}"><br>
+            <p class="inFont">被告(例:张某；李某；)：</p>
+            <input class="form-control" name="defendants" type="text" th:value="${defendants}"><br>
+            <p class="inFont">日期(例:2020-01-01)：</p>
+            <input class="form-control" name="date" type="text" th:value="${date}"><br>
+
+
+            <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                    <input type="submit" class="btn btn-success" value="确认">
+                </div>
+            </div>
+        </form>
+    </header>
+
+    <!-- 文章底部 -->
+</article>
+</body>
+</html>

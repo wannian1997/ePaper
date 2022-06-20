@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>裁判文书管理系统</title>
+    <!-- zui -->
+    <link href="css/zui.min.css" rel="stylesheet">
+
+</head>
+<body>
+<!--导航栏-->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!-- 导航项目 -->
+            <div class="collapse navbar-collapse navbar-collapse-example">
+                <!-- 一般导航项目 -->
+                <ul class="nav navbar-nav">
+                    <li><a href="/">😀裁判文书管理系统</a></li>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/uploadFile">上传文书</a></li>
+                    <li><a href="/searchCase">案号搜索</a></li>
+                    <li><a href="/logout" onclick="return confirm('确定注销吗？');">注销</a></li>
+                    <li style=""><a>裁判文书信息</a></li>
+                </ul>
+            </div><!-- END .navbar-collapse -->
+        </div>
+    </div>
+</nav>
+
+
+<article class="article">
+    <!-- 文章头部 -->
+    <header>
+        <!--标题-->
+        <h1 class="text-center" th:text="${paperName}"></h1>
+        <!-- 文章属性列表 -->
+        <dl class="dl-inline">
+            <dt>案号：</dt>
+            <dd th:text="${caseId}"></dd>
+            <a class="caseNameHref" style="float: right" th:href="@{/changeInformation(caseId=${caseId})}">修改本案信息</a>
+<!--            <button type="submit" style="float: right">修改本案信息</button>-->
+<!--            <form action="/changeInformation">-->
+<!--                <input type="text" name="caseId" th:value="${caseId}" readonly style="border: none;background: none;">-->
+<!--                <button type="submit" style="float: right">修改本案信息</button>-->
+<!--            </form>-->
+        </dl>
+        <dl class="dl-inline">
+            <dt>案由：</dt>
+            <dd th:text="${causeOfAction}"></dd>
+        </dl>
+        <dl class="dl-inline">
+            <dt>法院：</dt>
+            <dd th:text="${court}"></dd>
+        </dl>
+        <dl class="dl-inline">
+            <dt>文书类型：</dt>
+            <dd th:text="${paperType}"></dd>
+        </dl>
+        <dl class="dl-inline">
+            <dt>检察院：</dt>
+            <dd th:text="${prosecution}"></dd>
+        </dl>
+
+        <dl class="dl-inline">
+            <dt>被告：</dt>
+            <dd th:text="${defendants}"></dd>
+        </dl>
+
+        <dl class="dl-inline">
+            <dt>日期：</dt>
+            <dd th:text="${date}"></dd>
+        </dl>
+        <div class="abstract">
+            <p>摘要信息</p>
+        </div>
+    </header>
+    <!-- 文章正文部分 -->
+    <section class="content">
+        <div th:each="para:${part1}">
+            <p style="font-size: 23px;text-align:center;" th:text="${para}"></p>
+        </div>
+        <div th:each="para:${part2}">
+            <p style="text-align:right;" th:text="${para}"></p>
+        </div>
+        <!-- 正文 -->
+        <div th:each="para:${part3}">
+            <p style="text-indent:2em" th:text="${para}"></p>
+        </div>
+        <div th:each="para:${part4}">
+            <p style="text-align:right;" th:text="${para}"></p>
+        </div>
+        <div th:each="para:${part5}">
+            <p style="text-indent:2em" th:text="${para}"></p>
+        </div>
+
+    </section>
+    <!-- 文章底部 -->
+</article>
+</body>
+</html>

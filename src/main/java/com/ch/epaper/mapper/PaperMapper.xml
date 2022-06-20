@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ch.epaper.mapper.PaperMapper">
+
+    <select id="listAll" resultType="com.ch.epaper.model.Paper">
+        select * from paper
+    </select>
+
+    <select id="selectPaperByCaseId" resultType="com.ch.epaper.model.Paper">
+        select * from paper
+        where caseId = #{caseId}
+    </select>
+
+    <insert id="insert">
+        insert into paper(caseId,causeOfAction,paperName,court,paperType,prosecution,indictmentId,timeOfCase,date,defendants,text,textIndex)
+            values (#{caseId},#{causeOfAction},#{paperName},#{court},#{paperType},#{prosecution},#{indictmentId},#{timeOfCase},#{date},#{defendants},#{text},#{textIndex});
+    </insert>
+
+    <update id="updatePaperByCaseId">
+        update paper set caseId=#{caseId},causeOfAction = #{causeOfAction},paperName=#{paperName},
+                         court = #{court},paperType=#{paperType},prosecution=#{prosecution},indictmentId=#{indictmentId},
+                         timeOfCase = #{timeOfCase},date=#{date},defendants=#{defendants},text=#{text}
+        where caseId = #{caseId}
+    </update>
+
+    <delete id="deletePaper">
+        delete from paper where caseId = #{caseId}
+    </delete>
+
+
+</mapper>
